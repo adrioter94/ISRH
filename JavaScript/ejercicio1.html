@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 1</title>
+</head>
+<body>
+  <h1>
+    Ejercicio 1
+  </h1>
+  <button onclick="Colors(this)" type="button" id="red">Rojo</button>
+  <button onclick="Colors(this)" type="button" id="green">Verde</button>
+  <button onclick="Colors(this)" type="button" id="blue">Azul</button>
+</body>
+<script type="text/javascript">
+  function Colors(elem){
+    document.body.style.backgroundColor = elem.id
+  }
+</script>
+</html>

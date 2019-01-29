@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio 2</title>
+  </head>
+  <body>
+    <h1>
+      Ejercicio 2
+    </h1>
+    <form name="myForm" action="index.html" method="post" onsubmit="return validateForm()">
+      Nombre:<br>
+      <input type="text" name="nombre">
+      <br><br>
+      Apellidos:<br>
+      <input type="text" name="apellido">
+      <br><br>
+      Edad:<br>
+      <input type="text" name="edad">
+      <br><br>
+      Correo:<br>
+      <input type="text" name="correo">
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+  <script type="text/javascript">
+
+    function validateForm(){
+      var name = document.forms["myForm"]["nombre"].value;
+      if (name == "" || name.length > 50 || /\d/.test(name)) {
+        alert("Nombre inválido");
+        return false;
+      }
+
+      var lastname = document.forms["myForm"]["apellido"].value;
+      if (lastname == "" || lastname.length > 50 || /\d/.test(lastname)) {
+        alert("Apellido inválido");
+        return false;
+      }
+
+      var age = document.forms["myForm"]["edad"].value;
+      age = parseInt(age)
+      if(age < 0 || age > 100 || !Number.isInteger(age)){
+        alert("Edad inválida");
+        return false;
+      }
+
+      var mail = document.forms["myForm"]["correo"].value;
+      var re = /\S+@\S+\.com/
+      if(!re.test(mail)){
+        alert("Correo inválido");
+        return false;
+      }
+    }
+  </script>
+</html>
