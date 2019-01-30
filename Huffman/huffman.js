@@ -3,10 +3,9 @@ var dict_str = "ABCDE"
 
 
 class Letter {
-  constructor(name, prob, code){
+  constructor(name, prob){
     this.name = name
     this.prob = prob
-    this.code = null
   }
   toString(){
     return String(this.name) + ": " + String(this.prob)
@@ -33,6 +32,62 @@ dict.push(C)
 dict.push(D)
 dict.push(E)
 
+function huffman(){
+  resetDictCoded()
+  var chain = document.getElementById('chain').value.toUpperCase();
+  if (!isValid(chain)){
+    alert("Cadena inválida: El diccionario es " + dict)
+    return false
+  }
+  entropy()
+  getCode(dict)
+  meanLong()
+  insertTable()
+  // console.log(dict_coded);
+  // console.log(dict);
+  document.getElementById("huffman_code").innerHTML = chain + " = ";
+  for (var s in chain) {
+    document.getElementById("huffman_code").innerHTML += dict_coded[chain[s]];
+  }
+}
+
+function resetDictCoded() {
+  dict_coded["A"] = "";
+  dict_coded["B"] = "";
+  dict_coded["C"] = "";
+  dict_coded["D"] = "";
+  dict_coded["E"] = "";
+}
+
+function insertTable() {
+  var table = document.getElementById("table");
+  for (l in dict_coded) {
+    console.log(l);
+    var row = table.insertRow(-1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    cell1.innerHTML = l;
+    cell2.innerHTML = dict_coded[l];
+  }
+
+}
+
+function entropy() {
+  var sum = 0;
+  for (l in dict) {
+    sum += -Math.log2(dict[l].prob)*dict[l].prob
+  }
+  document.getElementById("entropy").innerHTML = "Entropía = " + sum;
+}
+
+function meanLong() {
+  var sum = 0
+  for (l in dict) {
+    sum += dict_coded[dict[l].name].length*dict[l].prob
+  }
+  document.getElementById("long").innerHTML = "Longitud media = " + sum;
+
+}
 
 function getCode(arr) {
   if (arr.length == 1) {
@@ -83,24 +138,9 @@ function sort(arr) {
     }
     sort_arr.push(small)
   }
-//  console.log(sort_arr)
   return sort_arr
 }
 
-function huffman(){
-  var chain = document.getElementById('chain').value.toUpperCase();
-  if (!isValid(chain)){
-    alert("Cadena inválida: El diccionario es " + dict)
-    return false
-  }
-  getCode(dict)
-  console.log(dict_coded);
-  document.getElementById("huffman_code").innerHTML = chain + " = ";
-  for (var s in chain) {
-    document.getElementById("huffman_code").innerHTML += dict_coded[chain[s]];
-    console.log(chain[s]);
-  }
-}
 
 function isValid(chain){
   for (var i = 0; i < chain.length; i++) {

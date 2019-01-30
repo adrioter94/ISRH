@@ -3,13 +3,23 @@
   <head>
     <meta charset="utf-8">
     <title>Huffman</title>
+    <style>
+      table {
+        border: 1px solid black;
+      }
+</style>
   </head>
   <body>
     <h1>Codificación Huffman</h1>
     Introduce una cadena:
     <input type="text" name="" id="chain">
     <button onclick="huffman()" type="button" >Go!</button>
-    <p id="huffman_code">
+    <p id="entropy"></p>
+    <table id="table">
+
+    </table>
+    <p id="huffman_code"></p>
+    <p id="long"></p>
   </body>
   <script type="text/javascript" src="huffman.js"></script>
 </html>
