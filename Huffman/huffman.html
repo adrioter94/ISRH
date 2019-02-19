@@ -3,13 +3,64 @@
   <head>
     <meta charset="utf-8">
     <title>Huffman</title>
+    <link rel="stylesheet" type="text/css" href="huffman.css">
   </head>
-  <body>
+  <body onload="entropy()">
     <h1>Codificación Huffman</h1>
-    Introduce una cadena:
-    <input type="text" name="" id="chain">
-    <button onclick="huffman()" type="button" >Go!</button>
-    <p id="huffman_code">
+    <div id="statement">
+      <div id="statement_table">
+        <h2>
+          Diccionario
+        </h2>
+        <table>
+          <tr>
+            <th>Símbolo (s) </th>
+            <th>Probabilidad p(s) </th>
+          </tr>
+          <tr>
+            <td>A</td>
+            <td>0.1</td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td>0.2</td>
+          </tr>
+          <tr>
+            <td>C</td>
+            <td>0.4</td>
+          </tr>
+          <tr>
+            <td>D</td>
+            <td>0.2</td>
+          </tr>
+          <tr>
+            <td>E</td>
+            <td>0.1</td>
+          </tr>
+        </table>
+
+        <p id="entropy"></p>
+      </div>
+
+      <div id="input">
+        Introduce una cadena:
+        <input type="text" name="" id="chain" onkeypress="runScript(event)">
+        <button onclick="huffman()" type="button" >Go!</button>
+      </div>
+    </div>
+    <hr>
+    <br>
+    <div id="result">
+      <div id="coded">
+        <table id="coded_table">
+        </table>
+        <p id="long"></p>
+      </div>
+      <div id="code_result">
+        <p id="huffman_code"></p>
+      </div>
+    </div>
+
   </body>
   <script type="text/javascript" src="huffman.js"></script>
 </html>

@@ -1,0 +1,32 @@
+#statement, #result {
+  width: 100%;
+  height: 250px;
+  margin-bottom: 5px;
+
+}
+#input, #code_result{
+  width: 60%;
+  float: left;
+  margin-top: 125px;
+}
+
+#statement_table, #coded  {
+  float: left;
+  width: 20%;
+}
+
+#result {
+  height: 200px;
+}
+#code_result {
+  margin-top: 50px;
+}
+
+table, tbody, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+td {
+  text-align: center;
+}
